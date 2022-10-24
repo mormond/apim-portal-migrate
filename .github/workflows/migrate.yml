@@ -29,7 +29,7 @@ jobs:
         # subscription-id: ${{ secrets.SUBSCRIPTIONID }}
 
     - run: npm install
-    - run: cd scripts.v3
-    - run: node ./capture --subscriptionId ${{ secrets.SUBSCRIPTIONID }} --resourceGroupName "test-apim" --serviceName "meo-apim"
+    
+    - run: node ./scripts.v3/capture --subscriptionId ${{ secrets.SUBSCRIPTIONID }} --resourceGroupName "test-apim" --serviceName "meo-apim"
     
     
