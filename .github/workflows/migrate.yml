@@ -24,27 +24,26 @@ jobs:
       uses: Azure/login@v1.4.6
       with:
         # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-        # Azure subscriptionId
-        # subscription-id: ${{ secrets.SUBSCRIPTIONID }}
+        creds: "${{ secrets.AZURE_CREDENTIALS }}"
 
     - run: npm install
     
     - run: >
         node ./scripts.v3/capture
-        --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
+        --subscriptionId "${{ secrets.SUBSCRIPTIONID }}"
         --resourceGroupName "test-apim"
         --serviceName "meo-apim"
 
     - run: >
         node ./scripts.v3/cleanup
-        --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
+        --subscriptionId "${{ secrets.SUBSCRIPTIONID }}"
         --resourceGroupName "test-apim"
         --serviceName "meo-apim-production"
 
     - run: >
         node ./scripts.v3/generate
-        --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
+        --subscriptionId "${{ secrets.SUBSCRIPTIONID }}"
         --resourceGroupName "test-apim"
-        --serviceName "meo-apim-production"   
+        --serviceName "meo-apim-production"
+        --publish "true"
       
