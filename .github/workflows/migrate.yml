@@ -31,20 +31,20 @@ jobs:
     - run: npm install
     
     - run: >
-        node ./scripts.v3/capture
-          --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
-          --resourceGroupName "test-apim"
+        node ./scripts.v3/capture ^
+          --subscriptionId ${{ secrets.SUBSCRIPTIONID }} ^
+          --resourceGroupName "test-apim" ^
           --serviceName "meo-apim"
 
     - run: >
-        node ./scripts.v3/cleanup
-          --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
-          --resourceGroupName "test-apim"
+        node ./scripts.v3/cleanup ^
+          --subscriptionId ${{ secrets.SUBSCRIPTIONID }} ^
+          --resourceGroupName "test-apim" ^
           --serviceName "meo-apim-production"
 
     - run: >
-        node ./scripts.v3/generate
-          --subscriptionId ${{ secrets.SUBSCRIPTIONID }}
-          --resourceGroupName "test-apim"
+        node ./scripts.v3/generate ^
+          --subscriptionId ${{ secrets.SUBSCRIPTIONID }} ^
+          --resourceGroupName "test-apim" ^
           --serviceName "meo-apim-production"   
       
