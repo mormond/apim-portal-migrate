@@ -20,4 +20,16 @@ jobs:
         node-version: 16
         cache: 'npm'
 
+    - name: Azure Login
+      uses: Azure/login@v1.4.6
+      with:
+        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        # Azure subscriptionId
+        subscription-id: ${{ secrets.SUBSCRIPTIONID }}
+
     - run: npm install
+    - run: cd scripts.v3
+    - run: node ./capture --subscriptionId ${{ secrets.SUBSCRIPTIONID }} --resourceGroupName "test-apim" --serviceName "meo-apim"
+    
+    
